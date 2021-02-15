@@ -1,0 +1,76 @@
+@import 'themes';
+
+@import '~@nebular/theme/styles/globals';
+
+@include nb-install() {
+  @include nb-theme-global();
+};
+@import '../node_modules/@nebular/theme/styles/theming';
+@import '../node_modules/@nebular/theme/styles/themes/default';
+//@import '../../../../node_modules/@nebular/theme/styles/themes/dark';
+//@import '../../../../node_modules/@nebular/theme/styles/themes/cosmic';
+//@import '../../../../node_modules/@nebular/theme/styles/themes/corporate';
+//@import '../../../assets/fonts/fonts.scss';
+
+$nb-themes: nb-register-theme((
+// add your variables here like:
+
+// color-primary-100: #f2f6ff,
+// color-primary-200: #d9e4ff,
+// color-primary-300: #a6c1ff,
+// color-primary-400: #598bff,
+// color-primary-500: #3366ff,
+// color-primary-600: #274bdb,
+// color-primary-700: #1a34b8,
+// color-primary-800: #102694,
+// color-primary-900: #091c7a,
+
+), default, default);
+
+@import '~@nebular/theme/styles/globals';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/grid';
+
+@include nb-install() {
+@include nb-theme-global();
+}
+
+label {
+@extend .label;
+  cursor: inherit;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+}
+
+// Fix for Bootstrap Override issue: https://github.com/akveo/nebular/issues/1906
+@each $status in nb-get-statuses() {
+@include text-emphasis-variant(".text-#{$status}", nb-theme(color-#{$status}-default), true);
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+nb-card {
+  min-height: 300px;
+}
+
+nb-action:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 15%;
+}
+
+button {
+  margin-top: 1rem!important;
+  margin-bottom: 1rem!important;
+}
+
+.mw-300 {
+  min-width: 300px;
+}
+
+.mw-50p {
+  min-width: 50%;
+}

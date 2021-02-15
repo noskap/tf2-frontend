@@ -1,0 +1,89 @@
+<nb-layout>
+
+    <nb-layout-header fixed>
+        <div class="container-fluid p-0 m-0">
+
+            <h1>
+                <strong>
+                    I AM THE COOL
+                </strong>
+            </h1>
+        </div>
+    </nb-layout-header>
+
+    <nb-layout-column>
+
+        <div class="container col-12">
+            <div>NOTICE: Server IP may be moving soon thanks to the
+                <a href="https://www.abc.net.au/news/2021-01-14/qld-lowest-rental-vacancy-rates-in-10-years-tenants-struggling/13039686">
+                    LNP/Murdoch Government forcing me out of my home
+                </a>
+            </div>
+            <button nbButton status="primary" (click)="show = !show">
+                I am the cool
+            </button>
+            <app-youtube *ngIf="show"></app-youtube>
+
+            <div><a href="mailto:meatloaf.tf@gmail.com">Contact me @ meatloaf.tf@gmail.com</a></div>
+            <div class="py-3">
+                <div *ngIf="serverStatus | async as et" class="py-4 shadow col">
+                    <div>
+                        <div class="row my-1 col" *ngFor="let e of et">{{e}}</div>
+                    </div>
+                    <div *ngIf="playerList && playerList.length" class="pt-3">
+                        <div class="row my-1">
+                            <div class="col-1">userid</div>
+                            <div class="col">name</div>
+                            <div class="col">uniqueid</div>
+                            <div class="col">connected</div>
+                            <div class="col-1">ping</div>
+                            <div class="col-1">loss</div>
+                            <div class="col-1">state</div>
+                            <div class="col-1">adr</div>
+                        </div>
+                        <hr>
+                        <div class="row my-1" *ngFor="let e of playerList">
+                            <div class="col-1">{{e.userid}}</div>
+                            <div class="col">{{e.name}}</div>
+                            <div class="col">{{e.uniqueid}}</div>
+                            <div class="col">{{e.connected}}</div>
+                            <div class="col-1">{{e.ping}}</div>
+                            <div class="col-1">{{e.loss}}</div>
+                            <div class="col-1">{{e.state}}</div>
+                            <div class="col-1">{{e.adr}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="playerRanks | async as et" class="py-4 shadow">
+                <div *ngIf="et && et.length" class="col">
+                    <div class="row">
+                        <div class="col-1 text-capitalize">Rank</div>
+                        <div class="col text-capitalize">Nickname</div>
+                        <div class="col text-capitalize">Points</div>
+                        <div class="col-1 text-capitalize">Ratio</div>
+                        <div class="col-1 text-capitalize">kills</div>
+                        <div class="col-1 text-capitalize">deaths</div>
+                        <div class="col text-capitalize">last login</div>
+                    </div>
+                    <hr>
+                    <div *ngFor="let row of et; let i = index" class="row">
+                        <div class="col-1">{{i + 1}}</div>
+                        <div class="col" [nbTooltip]="row.steamid">{{row.nickname}}</div>
+                        <div class="col">{{row.points | number}}</div>
+                        <div class="col-1">{{calculateRatio(row.kills, row.deaths)}}</div>
+                        <div class="col-1">{{row.kills}}</div>
+                        <div class="col-1">{{row.deaths}}</div>
+                        <div class="col">{{row.seen | date:'dd/MM/yyyy hh:mm'}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </nb-layout-column>
+
+    <!--  <nb-layout-footer fixed>-->
+    <!--    &lt;!&ndash; Insert footer here &ndash;&gt;-->
+    <!--  </nb-layout-footer>-->
+
+</nb-layout>

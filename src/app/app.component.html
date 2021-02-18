@@ -5,7 +5,7 @@
 
             <h1>
                 <strong>
-                   meatloaf.tf
+                    meatloaf.tf
                 </strong>
             </h1>
         </div>
@@ -79,11 +79,11 @@
                 </div>
             </div>
         </div>
-
     </nb-layout-column>
 
-    <!--  <nb-layout-footer fixed>-->
-    <!--    &lt;!&ndash; Insert footer here &ndash;&gt;-->
-    <!--  </nb-layout-footer>-->
+    <nb-layout-footer fixed>
+        <!-- Insert footer here -->
+        <div>{{  quote | async | json}}</div>
+    </nb-layout-footer>
 
 </nb-layout>

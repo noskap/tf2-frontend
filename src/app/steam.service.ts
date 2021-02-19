@@ -14,21 +14,21 @@ export class SteamService {
   }
 
   public quote():Observable<any> {
-      return this.httpClient.get(`http://167.179.175.30:8880/quote`)
+      return this.httpClient.get(`https://167.179.175.30:8880/quote`)
           .pipe(tap(console.log));
   }
 
   public status(): Observable<string> {
-    return this.httpClient.get(`http://167.179.175.30:8880/steam`, {responseType: "text"})//{observe: 'response'})
-    // return this.httpClient.get(`http://localhost:80/steam`, {responseType: "text"})//{observe: 'response'})
+    return this.httpClient.get(`https://167.179.175.30:8880/steam`, {responseType: "text"})//{observe: 'response'})
+    // return this.httpClient.get(`https://localhost:80/steam`, {responseType: "text"})//{observe: 'response'})
       .pipe(tap(e => {
         // console.log(e)
       }), map((e: string) => e));
   }
 
   public getRanks(): Observable<Array<PlayerRankInterface>> {
-    return this.httpClient.get(`http://167.179.175.30:8880/steam/rank`,)//{observe: 'response'})
-    // return this.httpClient.get(`http://localhost:80/steam/rank`,)//{observe: 'response'})
+    return this.httpClient.get(`https://167.179.175.30:8880/steam/rank`,)//{observe: 'response'})
+    // return this.httpClient.get(`https://localhost:80/steam/rank`,)//{observe: 'response'})
       .pipe(map((e: Array<PlayerRankInterface>) => e));
   }
 

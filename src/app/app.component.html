@@ -22,35 +22,36 @@
                 I am the cool
             </button>
             <app-youtube *ngIf="show"></app-youtube>
-            
+
             <div class="py-3">
-                <div *ngIf="serverStatus | async as et" class="py-4 shadow col">
-                    <div>
-                        <div class="row my-1 col" *ngFor="let e of et">{{e}}</div>
-                    </div>
-                    <div *ngIf="playerList && playerList.length" class="pt-3">
-                        <div class="row my-1">
-                            <div class="col-1">userid</div>
-                            <div class="col">name</div>
-                            <div class="col">uniqueid</div>
-                            <div class="col">connected</div>
-                            <div class="col-1">ping</div>
-                            <div class="col-1">loss</div>
-                            <div class="col-1">state</div>
-                            <div class="col-1">adr</div>
-                        </div>
-                        <hr>
-                        <div class="row my-1" *ngFor="let e of playerList">
-                            <div class="col-1">{{e.userid}}</div>
-                            <div class="col">{{e.name}}</div>
-                            <div class="col">{{e.uniqueid}}</div>
-                            <div class="col">{{e.connected}}</div>
-                            <div class="col-1">{{e.ping}}</div>
-                            <div class="col-1">{{e.loss}}</div>
-                            <div class="col-1">{{e.state}}</div>
-                            <div class="col-1">{{e.adr}}</div>
-                        </div>
-                    </div>
+                <div *ngIf="serverStatus | async as et" class="py-3 shadow col">
+                    <div>{{'Server is ' + (et ? 'online' : 'offline')}}</div>
+                    <!--                    <div>-->
+                    <!--                        <div class="row my-1 col" *ngFor="let e of et">{{e}}</div>-->
+                    <!--                    </div>-->
+            <div *ngIf="playerList && playerList.length" class="pt-3">
+                <div class="row my-1">
+                    <div class="col-1">userid</div>
+                    <div class="col">name</div>
+                    <div class="col">uniqueid</div>
+                    <div class="col">connected</div>
+                    <div class="col-1">ping</div>
+                    <div class="col-1">loss</div>
+                    <div class="col-1">state</div>
+                    <div class="col-1">adr</div>
+                </div>
+                <hr>
+                <div class="row my-1" *ngFor="let e of playerList">
+                    <div class="col-1">{{e.userid}}</div>
+                    <div class="col">{{e.name}}</div>
+                    <div class="col">{{e.uniqueid}}</div>
+                    <div class="col">{{e.connected}}</div>
+                    <div class="col-1">{{e.ping}}</div>
+                    <div class="col-1">{{e.loss}}</div>
+                    <div class="col-1">{{e.state}}</div>
+                    <div class="col-1">{{e.adr}}</div>
+                </div>
+            </div>
                 </div>
             </div>
             <div *ngIf="playerRanks | async as et" class="py-4 shadow">

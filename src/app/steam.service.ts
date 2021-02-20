@@ -30,7 +30,9 @@ export class SteamService {
     public getRanks(): Observable<Array<PlayerRankInterface>> {
         return this.httpClient.get(`https://steam.meatloaf.tf:8443/steam/rank`,)//{observe: 'response'})
             // return this.httpClient.get(`https://localhost:80/steam/rank`,)//{observe: 'response'})
-            .pipe(map((e: Array<PlayerRankInterface>) => e));
+            .pipe(map((e: Array<PlayerRankInterface>) => {
+                return e.slice(0,20)
+            }));
     }
 
     public getStatusOnTimer() {

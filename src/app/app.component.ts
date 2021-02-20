@@ -4,18 +4,19 @@ import {map} from "rxjs/operators";
 import {Observable} from "rxjs";
 import {PlayerListInterface, PlayerRankInterface} from "./playerRankInterface";
 import {Title} from "@angular/platform-browser";
+import {Lebowski} from "./lebowski";
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
     public serverStatus: Observable<any>;
     public playerRanks: Observable<Array<PlayerRankInterface>>;
     public show = false;
     public playerList: Array<PlayerListInterface> = [];
-    public quote;
+    public quote: Observable<Lebowski>;
 
     constructor(public steamService: SteamService, private titleService: Title) {
         this.quote = this.steamService.quote();

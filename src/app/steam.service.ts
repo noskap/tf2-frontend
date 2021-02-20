@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable, timer} from "rxjs";
 import {map, switchMap, tap} from "rxjs/operators";
 import {PlayerRankInterface} from "./playerRankInterface";
+import {Lebowski} from "./lebowski";
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +14,7 @@ export class SteamService {
     constructor(private httpClient: HttpClient) {
     }
 
-    public quote(): Observable<any> {
+    public quote(): Observable<Lebowski> {
         return this.httpClient.get(`https://steam.meatloaf.tf:8443/quote`)
             .pipe(tap(console.log));
     }

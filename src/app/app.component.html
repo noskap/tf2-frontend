@@ -2,7 +2,6 @@
 
     <nb-layout-header fixed>
         <div class="container-fluid p-0 m-0">
-
             <h1>
                 <strong>
                     meatloaf.tf
@@ -14,17 +13,16 @@
     <nb-layout-column>
 
         <div class="container col-12">
-            <div>NOTICE: Server IP may be moving soon thanks to the
+            <div>
                 <a href="https://www.abc.net.au/news/2021-01-14/qld-lowest-rental-vacancy-rates-in-10-years-tenants-struggling/13039686">
-                    LNP/Murdoch Government forcing me out of my home
+                    NOTICE: Server IP may be moving soon
                 </a>
             </div>
             <button nbButton status="primary" (click)="show = !show">
                 I am the cool
             </button>
             <app-youtube *ngIf="show"></app-youtube>
-
-            <div><a href="mailto:meatloaf.tf@gmail.com">Contact me @ meatloaf.tf@gmail.com</a></div>
+            
             <div class="py-3">
                 <div *ngIf="serverStatus | async as et" class="py-4 shadow col">
                     <div>
@@ -79,11 +77,30 @@
                 </div>
             </div>
         </div>
+
     </nb-layout-column>
 
     <nb-layout-footer fixed>
         <!-- Insert footer here -->
-        <div>{{  quote | async | json}}</div>
+        <div class="col-2">
+            <button nbButton status="success">
+                <a href="mailto:meatloaf.tf@gmail.com">Contact</a>
+            </button>
+        </div>
+        <div class="col" *ngIf="quote |async as q">
+            <div *ngIf="q && q.quote">
+                <div *ngFor="let f of q.quote.lines; let i = index" class="lebowski col-8">
+                    <div>
+                        <small>
+                            {{f.character.name}}
+                        </small>
+                    </div>
+                    <small>
+                        {{f.text}}
+                    </small>
+                </div>
+            </div>
+        </div>
     </nb-layout-footer>
 
 </nb-layout>

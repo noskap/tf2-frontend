@@ -6,8 +6,8 @@
   @include nb-theme-global();
 };
 @import '../node_modules/@nebular/theme/styles/theming';
-@import '../node_modules/@nebular/theme/styles/themes/default';
-//@import '../../../../node_modules/@nebular/theme/styles/themes/dark';
+//@import '../node_modules/@nebular/theme/styles/themes/default';
+@import '../node_modules/@nebular/theme/styles/themes/dark';
 //@import '../../../../node_modules/@nebular/theme/styles/themes/cosmic';
 //@import '../../../../node_modules/@nebular/theme/styles/themes/corporate';
 //@import '../../../assets/fonts/fonts.scss';
@@ -25,7 +25,7 @@ $nb-themes: nb-register-theme((
 // color-primary-800: #102694,
 // color-primary-900: #091c7a,
 
-), default, default);
+), dark, dark);
 
 @import '~@nebular/theme/styles/globals';
 @import '~bootstrap/scss/functions';

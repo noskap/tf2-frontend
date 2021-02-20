@@ -4,24 +4,25 @@ import {HttpClientModule} from "@angular/common/http";
 import {AppComponent} from './app.component';
 import {YoutubeComponent} from './youtube/youtube.component';
 import {
-    DEFAULT_THEME,
+    DARK_THEME,
     NbActionsModule,
     NbButtonModule,
     NbIconModule,
     NbLayoutModule,
     NbSidebarModule,
-    NbThemeModule, NbTooltipModule
+    NbThemeModule,
+    NbTooltipModule
 } from "@nebular/theme";
 import {NbEvaIconsModule} from "@nebular/eva-icons";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './app-routing.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AppRoutingModule} from './app-routing.module';
 
 // import * as f from './db';
 @NgModule({
-  declarations: [
-    AppComponent,
-    YoutubeComponent,
-  ],
+    declarations: [
+        AppComponent,
+        YoutubeComponent,
+    ],
     imports: [
         BrowserModule,
         HttpClientModule,
@@ -29,8 +30,11 @@ import { AppRoutingModule } from './app-routing.module';
         NbSidebarModule.forRoot(), //if this is your app.module
         NbEvaIconsModule,
         // NbMenuModule.forRoot(),
-        NbThemeModule.forRoot({name: 'default'}, [DEFAULT_THEME,
-            // COSMIC_THEME, DARK_THEME, CORPORATE_THEME
+        NbThemeModule.forRoot({name: 'dark'}, [
+            // DEFAULT_THEME,
+            // COSMIC_THEME,
+            DARK_THEME,
+            // CORPORATE_THEME
         ]),
         NbIconModule,
         // NbDatepickerModule.forRoot(),
@@ -38,11 +42,11 @@ import { AppRoutingModule } from './app-routing.module';
         NbButtonModule,
         NbTooltipModule,
         BrowserAnimationsModule,
-        NbThemeModule.forRoot({ name: 'default' }),
+        NbThemeModule.forRoot({name: 'dark'}),
         AppRoutingModule,
     ],
-  providers: [],
-  bootstrap: [AppComponent]
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }

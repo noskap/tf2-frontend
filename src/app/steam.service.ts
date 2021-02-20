@@ -14,12 +14,12 @@ export class SteamService {
     }
 
     public quote(): Observable<any> {
-        return this.httpClient.get(`https://steam.meatlaof.tf:8443/quote`)
+        return this.httpClient.get(`https://steam.meatloaf.tf:8443/quote`)
             .pipe(tap(console.log));
     }
 
     public status(): Observable<string> {
-        return this.httpClient.get(`https://steam.meatlaof.tf:8443/steam`, {responseType: "text"})//{observe: 'response'})
+        return this.httpClient.get(`https://steam.meatloaf.tf:8443/steam`, {responseType: "text"})//{observe: 'response'})
             // return this.httpClient.get(`https://localhost:80/steam`, {responseType: "text"})//{observe: 'response'})
             .pipe(tap(e => {
                 // console.log(e)
@@ -27,7 +27,7 @@ export class SteamService {
     }
 
     public getRanks(): Observable<Array<PlayerRankInterface>> {
-        return this.httpClient.get(`https://steam.meatlaof.tf:8443/steam/rank`,)//{observe: 'response'})
+        return this.httpClient.get(`https://steam.meatloaf.tf:8443/steam/rank`,)//{observe: 'response'})
             // return this.httpClient.get(`https://localhost:80/steam/rank`,)//{observe: 'response'})
             .pipe(map((e: Array<PlayerRankInterface>) => e));
     }

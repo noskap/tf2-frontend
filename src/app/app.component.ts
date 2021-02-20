@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {SteamService} from "./steam.service";
-import {map} from "rxjs/operators";
-import {Observable} from "rxjs";
+import {catchError, map} from "rxjs/operators";
+import {Observable, of} from "rxjs";
 import {PlayerListInterface, PlayerRankInterface} from "./playerRankInterface";
 import {Title} from "@angular/platform-browser";
 import {Lebowski} from "./lebowski";
@@ -21,7 +21,10 @@ export class AppComponent {
     constructor(public steamService: SteamService, private titleService: Title) {
         this.quote = this.steamService.quote();
         this.serverStatus = steamService.getStatusOnTimer()
-            .pipe(map(text => {
+            .pipe(catchError(() => of(false)), map(text => {
+                if(!text){
+                    return false;
+                }
                 const te = text.split('\n');
                 this.titleService.setTitle(te[0].split('hostname: ')[1])
 

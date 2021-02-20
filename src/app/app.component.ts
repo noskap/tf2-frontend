@@ -25,6 +25,9 @@ export class AppComponent {
                 if(!text){
                     return false;
                 }
+                if(typeof text !== "string"){
+                    return;
+                }
                 const te = text.split('\n');
                 this.titleService.setTitle(te[0].split('hostname: ')[1])
 

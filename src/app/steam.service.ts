@@ -31,7 +31,11 @@ export class SteamService {
         return this.httpClient.get(`https://steam.meatloaf.tf:8443/steam/rank`,)//{observe: 'response'})
             // return this.httpClient.get(`https://localhost:80/steam/rank`,)//{observe: 'response'})
             .pipe(map((e: Array<PlayerRankInterface>) => {
-                return e.slice(0,20)
+                return e
+                    .sort((a, b) => {
+                        return a.points > b.points ? -1 : 0
+                    })
+                    .slice(0, 20)
             }));
     }
 

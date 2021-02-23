@@ -3,7 +3,7 @@ import {SteamService} from "./steam.service";
 import {catchError, map} from "rxjs/operators";
 import {Observable, of} from "rxjs";
 import {PlayerListInterface, PlayerRankInterface} from "./playerRankInterface";
-import {Title} from "@angular/platform-browser";
+import {Meta, Title} from "@angular/platform-browser";
 import {Lebowski} from "./lebowski";
 
 @Component({
@@ -18,7 +18,12 @@ export class AppComponent {
     public playerList: Array<PlayerListInterface> = [];
     public quote: Observable<Lebowski>;
 
-    constructor(public steamService: SteamService, private titleService: Title) {
+    constructor(private meta: Meta, public steamService: SteamService, private titleService: Title) {
+        this.meta.addTags([
+            {name: 'description', content: 'Australian TF2 Arena maps, more beef less heat. This is not Nam. This is TF2. There are rules.'},
+            {name: 'author', content: 'meatloaf'},
+            {name: 'keywords', content: 'TF2, Meatloaf, meatloaf.tf, arena, Angular'}
+        ]);
         this.quote = this.steamService.quote();
         this.serverStatus = steamService.getStatusOnTimer()
             .pipe(catchError(() => of(false)), map(text => {

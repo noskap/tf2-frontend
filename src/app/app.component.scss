@@ -62,11 +62,16 @@ hr {
     float: left;
     padding-bottom: 2em;
 }
-
+img {
+    width: 50px;
+    border:none !important;
+}
 .content-column-left hr {
     display: none;
 }
+.rankhead {
 
+}
 .content-column-right {
     /* Values for IE/Win; will be overwritten for other browsers */
     width: 47%;

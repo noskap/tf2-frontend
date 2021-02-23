@@ -12,20 +12,40 @@
 //@import '../../../../node_modules/@nebular/theme/styles/themes/corporate';
 //@import '../../../assets/fonts/fonts.scss';
 
+@font-face {
+    font-family: tf2;
+    src: url(./assets/tf2build.ttf) format('truetype'),
+    url('./assets/TF2Build.f5f4cd70.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 $nb-themes: nb-register-theme((
-// add your variables here like:
 
-// color-primary-100: #f2f6ff,
-// color-primary-200: #d9e4ff,
-// color-primary-300: #a6c1ff,
-// color-primary-400: #598bff,
-// color-primary-500: #3366ff,
-// color-primary-600: #274bdb,
-// color-primary-700: #1a34b8,
-// color-primary-800: #102694,
-// color-primary-900: #091c7a,
+    // add your variables here like:
 
+    // color-primary-100: #f2f6ff,
+    // color-primary-200: #d9e4ff,
+    // color-primary-300: #a6c1ff,
+    // color-primary-400: #598bff,
+    // color-primary-500: #3366ff,
+    // color-primary-600: #274bdb,
+    // color-primary-700: #1a34b8,
+    // color-primary-800: #102694,
+    // color-primary-900: #091c7a,
+    //font-family-primary: 'tf2',
+    text-button-font-family: 'tf2',
+    font-family-secondary: 'tf2',
+    text-button-font-weight: 100,
+    text-heading-1-font-weight: 100,
+    text-heading-2-font-weight: 100,
+    text-heading-3-font-weight: 100,
+    text-heading-4-font-weight: 100,
+    text-heading-5-font-weight: 100,
+    color-success-default: #437f22,
+    //text-caption-font-weight: 200,
 ), dark, dark);
+
 
 @import '~@nebular/theme/styles/globals';
 @import '~bootstrap/scss/functions';

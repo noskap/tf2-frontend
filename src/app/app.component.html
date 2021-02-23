@@ -3,9 +3,13 @@
     <nb-layout-header fixed>
         <div class="container-fluid p-0 m-0">
             <h1>
-                <strong>
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Team_Fortress_2_style_logo.svg/1024px-Team_Fortress_2_style_logo.svg.png"
+                    alt="tf2" class="align-self-start">
+                <!--            <nb-user picture="https://i.redd.it/ixaiw1imvu651.png" showName="false"></nb-user>-->
+                <!--                <strong>-->
                     meatloaf.tf
-                </strong>
+                <!--                </strong>-->
             </h1>
         </div>
     </nb-layout-header>
@@ -13,14 +17,31 @@
     <nb-layout-column>
 
         <div class="container col-12">
-            <div>
-                <a href="https://www.abc.net.au/news/2021-01-14/qld-lowest-rental-vacancy-rates-in-10-years-tenants-struggling/13039686">
-                    NOTICE: Server IP may be moving soon
-                </a>
+            <a href="https://www.abc.net.au/news/2021-01-14/qld-lowest-rental-vacancy-rates-in-10-years-tenants-struggling/13039686">
+                NOTICE: Server IP may be moving soon
+            </a>
+            <div class="row">
+
+                <div class="col-3">
+                    <button nbButton status="primary" (click)="show = !show">
+                        I am the cool
+                    </button>
+                </div>
+                <div class="col"></div>
+                <div class="col-3">
+                    <button nbButton status="success">
+                        <a class="d-flex text-white"
+                           href="steam://connect/167.179.175.30:27015">
+                            <nb-user [showName]="false"
+                                     picture="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/1024px-Steam_icon_logo.svg.png"></nb-user>
+                            <div class="my-auto">
+                                Connect
+                            </div>
+                        </a>
+                    </button>
+                </div>
             </div>
-            <button nbButton status="primary" (click)="show = !show">
-                I am the cool
-            </button>
+            <!--            steam://connect/us1.uncledane.com:27015-->
             <app-youtube *ngIf="show"></app-youtube>
 
             <ng-template #offline>
@@ -60,7 +81,7 @@
             </div>
             <div *ngIf="playerRanks | async as et" class="py-4 shadow">
                 <div *ngIf="et && et.length" class="col">
-                    <div class="row">
+                    <div class="row rankhead">
                         <div class="col-1 text-capitalize">Rank</div>
                         <div class="col text-capitalize">Nickname</div>
                         <div class="col text-capitalize">Points</div>
@@ -69,7 +90,7 @@
                         <div class="col-1 text-capitalize">deaths</div>
                         <div class="col text-capitalize">last login</div>
                     </div>
-                    <hr>
+                    <hr class="">
                     <div *ngFor="let row of et; let i = index" class="row">
                         <div class="col-1">{{i + 1}}</div>
                         <div class="col" [nbTooltip]="row.steamid">{{row.nickname}}</div>
@@ -77,6 +98,7 @@
                         <div class="col-1">{{calculateRatio(row.kills, row.deaths)}}</div>
                         <div class="col-1">{{row.kills}}</div>
                         <div class="col-1">{{row.deaths}}</div>
+                        <!--TODO fix last seen below-->
                         <div class="col">{{row.seen | date:'dd/MM/yyyy hh:mm'}}</div>
                     </div>
                 </div>
@@ -89,7 +111,7 @@
         <!-- Insert footer here -->
         <div class="col-2">
             <button nbButton status="success">
-                <a href="mailto:meatloaf.tf@gmail.com">Contact</a>
+                <a class="text-white" href="mailto:meatloaf.tf@gmail.com">Contact</a>
             </button>
         </div>
         <div class="col" *ngIf="quote |async as q">

@@ -11,7 +11,7 @@ import {
     NbLayoutModule,
     NbSidebarModule,
     NbThemeModule,
-    NbTooltipModule
+    NbTooltipModule, NbUserModule
 } from "@nebular/theme";
 import {NbEvaIconsModule} from "@nebular/eva-icons";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -44,6 +44,7 @@ import {AppRoutingModule} from './app-routing.module';
         BrowserAnimationsModule,
         NbThemeModule.forRoot({name: 'dark'}),
         AppRoutingModule,
+        NbUserModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -94,7 +94,7 @@
                     <div *ngFor="let row of et; let i = index" class="row">
                         <div class="col-1">{{i + 1}}</div>
                         <div class="col" [nbTooltip]="row.steamid">{{row.nickname}}</div>
-                        <div class="col">{{row.points | number}}</div>
+                        <div class="col">{{row.points | number: '0.0-0'}}</div>
                         <div class="col-1">{{calculateRatio(row.kills, row.deaths)}}</div>
                         <div class="col-1">{{row.kills}}</div>
                         <div class="col-1">{{row.deaths}}</div>

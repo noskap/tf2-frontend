@@ -28,7 +28,13 @@ export class AppComponent {
             {name: 'author', content: 'meatloaf'},
             {name: 'keywords', content: 'TF2, Meatloaf, meatloaf.tf, arena, Angular'}
         ]);
-        this.quote = this.steamService.quote();
+        this.quote = this.steamService.quote().pipe(map(e => {
+            console.log(e);
+            // e.quote.lines = e.quote.lines.filter((obj, index) => {
+            //
+            // });
+            return e;
+        }));
         this.serverStatus = steamService.getStatusOnTimer()
             .pipe(catchError(() => of(false)), map(text => {
                 if (!text) {
@@ -79,7 +85,16 @@ export class AppComponent {
             }));
         this.playerRanks = steamService.getRanks().pipe(map(ranks => {
             ranks = ranks.map(e => {
-                e.seen = new Date(e.seen);
+                const seen = e.seen;
+                // console.log(e.seen, e);
+                // "%b %d, %Y";
+                // console.log(moment.unix(e.seen as any), new Date(seen * 1000), strftime('%b %d, %Y', new Date(seen)));
+
+                // console.log(new Date(seen * 1000), moment(new Date(seen * 1000)), moment(seen * 1000));
+                // e.seen = new Date(seen * 1000);
+                e.seen = `${new Date(seen * 1000).toDateString().substring(4)} ${new Date(seen * 1000).toTimeString().substring(0, 8)}`;
+                // console.log(moment.tz.guess());
+                // e.seen = moment.utc(moment(seen * 1000)).zone(moment.tz.guess()).local();
                 return e;
             });
             return ranks.sort((a, b) => {

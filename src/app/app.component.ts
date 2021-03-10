@@ -92,7 +92,7 @@ export class AppComponent {
 
                 // console.log(new Date(seen * 1000), moment(new Date(seen * 1000)), moment(seen * 1000));
                 // e.seen = new Date(seen * 1000);
-                e.seen = `${new Date(seen * 1000).toDateString().substring(4)} ${new Date(seen * 1000).toTimeString().substring(0, 8)}`;
+                e.seen = `${new Date(seen as any * 1000).toDateString().substring(4)} ${new Date(seen as any * 1000).toTimeString().substring(0, 8)}` as any;
                 // console.log(moment.tz.guess());
                 // e.seen = moment.utc(moment(seen * 1000)).zone(moment.tz.guess()).local();
                 return e;
@@ -106,7 +106,7 @@ export class AppComponent {
         }));
     }
 
-    splice = function (stri, idx, rem, str) {
+    splice = function (stri: string, idx: number, rem: number, str: string) {
         return stri.slice(0, idx) + str + stri.slice(idx + Math.abs(rem));
     };
 

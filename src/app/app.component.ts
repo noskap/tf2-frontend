@@ -22,7 +22,7 @@ export class AppComponent {
         this.meta.addTags([
             {name: 'description', content: 'Australian TF2 Arena maps, more beef less heat. This is not Nam. This is TF2. There are rules.'},
             {name: 'author', content: 'meatloaf'},
-            {name: 'keywords', content: 'TF2, Meatloaf, meatloaf.tf, arena, Angular'}
+            {name: 'keywords', content: 'TF2, Meatloaf, meatloaf.tf, arena, Angular, soulix'}
         ]);
         this.quote = this.steamService.quote();
         this.serverStatus = steamService.getStatusOnTimer()

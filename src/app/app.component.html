@@ -3,26 +3,40 @@
     <nb-layout-header fixed>
         <div class="container-fluid p-0 m-0">
             <h1>
+                <!--                TODO update to angular 12-->
                 <img
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Team_Fortress_2_style_logo.svg/1024px-Team_Fortress_2_style_logo.svg.png"
                     alt="tf2" class="align-self-start">
                 <!--            <nb-user picture="https://i.redd.it/ixaiw1imvu651.png" showName="false"></nb-user>-->
                 <!--                <strong>-->
-                    meatloaf.tf
+                meatloaf.tf
                 <!--                </strong>-->
             </h1>
+            <!--            https://steamcommunity.com/groups/meatloaftf-->
+            <!--            https://discord.gg/jW5YrWGv3x-->
         </div>
     </nb-layout-header>
 
     <nb-layout-column>
 
         <div class="container col-12">
-            <a href="https://www.itnews.com.au/news/nbn-co-to-resume-new-hfc-orders-from-may-561546">
-                NOTICE: Server is offline til further notice due to worldwide chip shortage. If you have any questions feel free to email me at the contact button below
-            </a>
+            <div class="col-9">
+                <a href="https://www.itnews.com.au/news/nbn-co-to-resume-new-hfc-orders-from-may-561546">
+                    NOTICE: Server is offline til further notice due to worldwide chip shortage.</a>
+                <div>
+                    In the meantime please join
+                    the Steam group and Discord channel so you'll know when it's back! If you have any questions feel
+                    free
+                    to email me at the contact button below.
+                </div>
+            </div>
             <div class="row">
-                <div class="col"></div>
-                <div class="col-3">
+                <div class="col">
+                    <div class="mt-4">
+                        <div *ngIf="serverStatus | async else offline"></div>
+                    </div>
+                </div>
+                <div class="col-2">
                     <button nbButton status="success">
                         <a class="d-flex text-white"
                            href="steam://connect/167.179.175.30:27015">
@@ -33,13 +47,32 @@
                             </div>
                         </a>
                     </button>
+                    <button nbButton status="info">
+                        <a class="d-flex text-white"
+                           href="https://steamcommunity.com/groups/meatloaftf">
+                            <nb-user [showName]="false"
+                                     picture="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/1024px-Steam_icon_logo.svg.png"></nb-user>
+                            <div class="my-auto">
+                                Steam Group
+                            </div>
+                        </a>
+                    </button>
+                    <hr>
+                    <button nbButton status="success">
+                        <a class="text-white" href="mailto:meatloaf.tf@gmail.com">Contact</a>
+                    </button>
+                </div>
+                <div class="col-3">
+                    <iframe src="https://discord.com/widget?id=843452792139153408&theme=dark" width="350" height="300"
+                            allowtransparency="true" frameborder="0"
+                            sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
                 </div>
             </div>
             <!--            steam://connect/us1.uncledane.com:27015-->
             <app-youtube *ngIf="show"></app-youtube>
 
             <ng-template #offline>
-                <div>{{'Server is offline'}}</div>
+                <div class="p-4 shadow">{{'Server is offline'}}</div>
             </ng-template>
 
             <div class="py-3">
@@ -73,27 +106,29 @@
                     </div>
                 </div>
             </div>
-            <div *ngIf="playerRanks | async as et" class="py-4 shadow">
-                <div *ngIf="et && et.length" class="col">
-                    <div class="row rankhead">
-                        <div class="col-1 text-capitalize">Rank</div>
-                        <div class="col text-capitalize">Nickname</div>
-                        <div class="col text-capitalize">Points</div>
-                        <div class="col-1 text-capitalize">Ratio</div>
-                        <div class="col-1 text-capitalize">kills</div>
-                        <div class="col-1 text-capitalize">deaths</div>
-                        <div class="col text-capitalize">last login</div>
-                    </div>
-                    <hr class="">
-                    <div *ngFor="let row of et; let i = index" class="row">
-                        <div class="col-1">{{i + 1}}</div>
-                        <div class="col" [nbTooltip]="row.steamid">{{row.nickname}}</div>
-                        <div class="col">{{row.points | number: '0.0-0'}}</div>
-                        <div class="col-1">{{calculateRatio(row.kills, row.deaths)}}</div>
-                        <div class="col-1">{{row.kills}}</div>
-                        <div class="col-1">{{row.deaths}}</div>
-                        <div class="col">{{row.seen}}</div>
-<!--                        <div class="col">{{row.seen | date:'dd/MM/yyyy hh:mm'}}</div>-->
+            <div class="py-4 shadow">
+                <div *ngIf="playerRanks | async as et" class="col">
+                    <div *ngIf="et && et.length">
+                        <div class="row rankhead">
+                            <div class="col-1 text-capitalize">Rank</div>
+                            <div class="col text-capitalize">Nickname</div>
+                            <div class="col text-capitalize">Points</div>
+                            <div class="col-1 text-capitalize">Ratio</div>
+                            <div class="col-1 text-capitalize">kills</div>
+                            <div class="col-1 text-capitalize">deaths</div>
+                            <div class="col text-capitalize">last login</div>
+                        </div>
+                        <hr class="">
+                        <div *ngFor="let row of et; let i = index" class="row">
+                            <div class="col-1">{{i + 1}}</div>
+                            <div class="col" [nbTooltip]="row.steamid">{{row.nickname}}</div>
+                            <div class="col">{{row.points | number: '0.0-0'}}</div>
+                            <div class="col-1">{{calculateRatio(row.kills, row.deaths)}}</div>
+                            <div class="col-1">{{row.kills}}</div>
+                            <div class="col-1">{{row.deaths}}</div>
+                            <div class="col">{{row.seen}}</div>
+                            <!--                        <div class="col">{{row.seen | date:'dd/MM/yyyy hh:mm'}}</div>-->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -109,11 +144,11 @@
     <nb-layout-footer fixed>
         <!-- Insert footer here -->
         <div class="col-2">
-            <button nbButton status="success">
-                <a class="text-white" href="mailto:meatloaf.tf@gmail.com">Contact</a>
-            </button>
+            <!--            <button nbButton status="success">-->
+            <!--                <a class="text-white" href="mailto:meatloaf.tf@gmail.com">Contact</a>-->
+            <!--            </button>-->
         </div>
-        <div class="col" *ngIf="quote |async as q">
+        <div class="col" *ngIf="quote | async as q else noquote">
             <div *ngIf="q && q.quote">
                 <div *ngFor="let f of q.quote.lines; let i = index" class="lebowski col-8">
                     <div>
@@ -127,6 +162,17 @@
                 </div>
             </div>
         </div>
+        <ng-template #noquote>
+            <div class="lebowski col-8"></div>
+            <div class="lebowski col-8 font-italic">
+                <div>
+                    <small>
+                        "Sometimes you eat the bear,
+                    </small>
+                </div>
+                <small> and sometimes the bear eats you"</small>
+            </div>
+        </ng-template>
     </nb-layout-footer>
 
 </nb-layout>

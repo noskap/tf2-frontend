@@ -17,16 +17,10 @@
     <nb-layout-column>
 
         <div class="container col-12">
-            <a href="https://www.abc.net.au/news/2021-01-14/qld-lowest-rental-vacancy-rates-in-10-years-tenants-struggling/13039686">
-                NOTICE: Server IP may be moving soon
+            <a href="https://www.itnews.com.au/news/nbn-co-to-resume-new-hfc-orders-from-may-561546">
+                NOTICE: Server is offline til further notice due to worldwide chip shortage. If you have any questions feel free to email me at the contact button below
             </a>
             <div class="row">
-
-                <div class="col-3">
-                    <button nbButton status="primary" (click)="show = !show">
-                        I am the cool
-                    </button>
-                </div>
                 <div class="col"></div>
                 <div class="col-3">
                     <button nbButton status="success">
@@ -94,17 +88,22 @@
                     <div *ngFor="let row of et; let i = index" class="row">
                         <div class="col-1">{{i + 1}}</div>
                         <div class="col" [nbTooltip]="row.steamid">{{row.nickname}}</div>
-                        <div class="col">{{row.points | number}}</div>
+                        <div class="col">{{row.points | number: '0.0-0'}}</div>
                         <div class="col-1">{{calculateRatio(row.kills, row.deaths)}}</div>
                         <div class="col-1">{{row.kills}}</div>
                         <div class="col-1">{{row.deaths}}</div>
-                        <!--TODO fix last seen below-->
-                        <div class="col">{{row.seen | date:'dd/MM/yyyy hh:mm'}}</div>
+                        <div class="col">{{row.seen}}</div>
+<!--                        <div class="col">{{row.seen | date:'dd/MM/yyyy hh:mm'}}</div>-->
                     </div>
                 </div>
             </div>
         </div>
 
+        <div class="col-3">
+            <button nbButton status="primary" size="tiny" (click)="show = !show">
+                I am the cool
+            </button>
+        </div>
     </nb-layout-column>
 
     <nb-layout-footer fixed>
